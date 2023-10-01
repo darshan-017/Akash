@@ -1,0 +1,26 @@
+{% extends "basic_web/base.html" %}
+{% block content %}
+    <div class="full-image" id="fullImgBox">
+        <img alt="full image" src="" id="fullImage"/>
+        <span onclick="closeFullImg()">X</span>
+    </div>
+    <div class="image_gallery">
+        {% for photo in photos %}
+            <img alt="image" src="{{photo.photo.url}}" onclick="openFullImg(this.src)" />
+        {% endfor %}
+    </div>
+    <script>
+        var fullImgBox = document.getElementById("fullImgBox");
+        var fullImage = document.getElementById("fullImage");
+
+        function openFullImg(pic){
+            fullImgBox.style.display = "flex"; 
+            fullImage.src = pic;
+        }
+
+        function closeFullImg(){
+            fullImgBox.style.display = "none"; 
+        }
+
+    </script>
+{% endblock content %}
